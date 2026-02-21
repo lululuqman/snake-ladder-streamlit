@@ -131,10 +131,17 @@ def render_board(positions):
             tokens = ("🔴" if p1_pos == square else "") + ("🔵" if p2_pos == square else "")
             icon = "🐍" if not tokens and square in SNAKES else "🪜" if not tokens and square in LADDERS else ""
             
+            dest_html = ""
+            if square in SNAKES:
+                 dest_html = f'<div style="font-size:0.55rem;color:#a01a58;position:absolute;bottom:1px;right:3px;font-weight:bold;">to {SNAKES[square]}</div>'
+            elif square in LADDERS:
+                 dest_html = f'<div style="font-size:0.55rem;color:#0077b6;position:absolute;bottom:1px;right:3px;font-weight:bold;">to {LADDERS[square]}</div>'
+
             cell_html = (
                 f'<div class="board-cell" style="background:{bg};border:{border};">'
                 f'<div style="font-size:0.55rem;color:#adb5bd;position:absolute;top:2px;left:4px;">{square}</div>'
                 f'<div style="font-size:0.9rem;margin-top:6px;">{tokens if tokens else icon}</div>'
+                f'{dest_html}'
                 f'</div>'
             )
             cells.append(cell_html)

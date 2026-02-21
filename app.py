@@ -49,7 +49,7 @@ def handle_turn(player):
     emoji = PLAYER_COLORS[player]["emoji"]
     label = "AI" if st.session_state.mode == "ai" and player == "player_2" else PLAYER_COLORS[player]["label"]
     
-    log_entry = f"{emoji} **{label}** rolled {DICE_FACES[roll]}<br><span style='font-size:0.75rem; color:#adb5bd;'>{message}</span>"
+    log_entry = f"{emoji} <b>{label}</b> rolled {DICE_FACES[roll]}<br><span style='font-size:0.75rem; color:#adb5bd;'>{message}</span>"
     st.session_state.log.insert(0, log_entry)
 
     if event == "win":
@@ -61,7 +61,7 @@ def handle_turn(player):
 
     if check_extra_turn(roll):
         st.session_state.extra_turn = True
-        st.session_state.log.insert(0, f"✨ {emoji} **{label}** rolled a 6! Extra turn!")
+        st.session_state.log.insert(0, f"✨ {emoji} <b>{label}</b> rolled a 6! Extra turn!")
     else:
         st.session_state.extra_turn = False
         st.session_state.current_player = get_other_player(player)
