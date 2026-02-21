@@ -9,7 +9,7 @@ def apply_styles():
     html, body, [class*="css"] { font-family: 'Nunito', sans-serif; }
     h1, h2, h3 { font-family: 'Fredoka One', cursive; }
     .stApp {
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        background: linear-gradient(135deg, #FFD8DF 0%, #F0FFDF 50%, #A8DF8E 100%);
         min-height: 100vh;
     }
 
@@ -150,7 +150,7 @@ def render_sidebar_elements(log):
     
     if log:
         st.sidebar.markdown("**📜 Roll History**")
-        log_container = st.sidebar.container(height=350, border=False)
+        log_container = st.sidebar.container(height=300, border=False)
         for entry in log[:15]:
             log_container.markdown(f'<div class="log-entry">{entry}</div>', unsafe_allow_html=True)
             
