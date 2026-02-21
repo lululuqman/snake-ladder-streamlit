@@ -42,8 +42,8 @@ def apply_styles():
         margin: 2px; position: relative;
     }
     .board-wrapper {
-        background: rgba(255,255,255,0.04); border-radius: 16px;
-        padding: 0.5rem; border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(255,255,255,0.30); border-radius: 16px;
+        padding: 0.5rem; border: 1px solid rgba(255,255,255,0.50);
         display: inline-block; width: 100%; text-align: center;
     }
     
@@ -84,7 +84,7 @@ def apply_styles():
 
 def render_title():
     st.markdown('<p class="game-title">🐍 Snake & Ladder 🪜</p>', unsafe_allow_html=True)
-    st.markdown('<p class="game-subtitle">50-square edition · No Scrolling Required!</p>', unsafe_allow_html=True)
+    #st.markdown('<p class="game-subtitle">50-square edition · No Scrolling Required!</p>', unsafe_allow_html=True)
 
 def render_start_screen():
     st.markdown("---")
@@ -104,7 +104,7 @@ def render_player_stats(positions, stats, mode):
         st.markdown(
             f'<div class="info-card" style="border-color:#f72585;">'
             f'<span style="color:#f72585;font-family:Fredoka One;font-size:1rem;">🔴 Player 1</span><br>'
-            f'<span style="font-size:1.5rem;font-weight:bold;color:white;">Sq {positions["player_1"]}</span><br>'
+            f'<span style="font-size:1.5rem;font-weight:bold;color:black;">Sq {positions["player_1"]}</span><br>'
             f'<span style="color:#adb5bd;font-size:0.75rem;">'
             f'Turns: {len(stats["player_1"]["rolls"])} | 🐍 {stats["player_1"]["snakes_hit"]} | 🪜 {stats["player_1"]["ladders_climbed"]}</span>'
             f'</div>', unsafe_allow_html=True)
@@ -112,7 +112,7 @@ def render_player_stats(positions, stats, mode):
         st.markdown(
             f'<div class="info-card" style="border-color:#4cc9f0;">'
             f'<span style="color:#4cc9f0;font-family:Fredoka One;font-size:1rem;">🔵 {p2_label}</span><br>'
-            f'<span style="font-size:1.5rem;font-weight:bold;color:white;">Sq {positions["player_2"]}</span><br>'
+            f'<span style="font-size:1.5rem;font-weight:bold;color:black;">Sq {positions["player_2"]}</span><br>'
             f'<span style="color:#adb5bd;font-size:0.75rem;">'
             f'Turns: {len(stats["player_2"]["rolls"])} | 🐍 {stats["player_2"]["snakes_hit"]} | 🪜 {stats["player_2"]["ladders_climbed"]}</span>'
             f'</div>', unsafe_allow_html=True)
@@ -150,7 +150,7 @@ def render_sidebar_elements(log):
     
     if log:
         st.sidebar.markdown("**📜 Roll History**")
-        log_container = st.sidebar.container(height=300, border=False)
+        log_container = st.sidebar.container(height=240, border=False)
         for entry in log[:15]:
             log_container.markdown(f'<div class="log-entry">{entry}</div>', unsafe_allow_html=True)
             
